@@ -4,8 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-pint
-python.rootname     Pint
-version             0.23
+version             0.24.1
 revision            0
 
 categories-append   science
@@ -23,9 +22,9 @@ long_description    Pint is Python module/package to define, operate and \
 
 homepage            https://pint.readthedocs.org/
 
-checksums           rmd160  e5f5e0b619ed5140fa6e38f302eaf3ff95b68bdf \
-                    sha256  e1509b91606dbc52527c600a4ef74ffac12fff70688aff20e9072409346ec9b4 \
-                    size    347420
+checksums           rmd160  82ac3cf6ff43573b5221603e2fa27f199070b9ac \
+                    sha256  8849fe9d7b8532e5a5dc41e719e9e19268e18eac179d9a5645f21929a2a15caf \
+                    size    341032
 
 python.versions     38 39 310 311 312
 
@@ -34,6 +33,9 @@ if {${name} ne ${subport}} {
                     port:py${python.version}-setuptools_scm
 
     depends_lib-append \
+                    port:py${python.version}-appdirs \
+                    port:py${python.version}-flexcache \
+                    port:py${python.version}-flexparser \
                     port:py${python.version}-packaging
 
     test.run        yes
@@ -43,5 +45,20 @@ if {${name} ne ${subport}} {
         xinstall -d ${destroot}${docdir}
         xinstall -m 0644 -W ${worksrcpath} AUTHORS CHANGES LICENSE \
            README.rst ${destroot}${docdir}
+    }
+
+    if {${python.version} < 39} {
+        version     0.23
+        revision    0
+        epoch       1
+
+        checksums   rmd160  e5f5e0b619ed5140fa6e38f302eaf3ff95b68bdf \
+                    sha256  e1509b91606dbc52527c600a4ef74ffac12fff70688aff20e9072409346ec9b4 \
+                    size    347420
+
+        depends_lib-delete  \
+                    port:py${python.version}-appdirs \
+                    port:py${python.version}-flexcache \
+                    port:py${python.version}-flexparser
     }
 }

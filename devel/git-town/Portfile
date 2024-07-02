@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/git-town/git-town 14.2.1 v
+go.setup            github.com/git-town/git-town 14.2.3 v
 github.tarball_from archive
 revision            0
 
@@ -19,9 +19,9 @@ maintainers         {karpenko.ca:alexei @akarpenko} \
 
 homepage            https://www.git-town.com/
 
-checksums           sha256  96038b08574ff79a09ae56ecf0470dd7f8a3bd676e64dfd7c06c1b3b98ceb897 \
-                    rmd160  c2faba105c62932f2bd95bf8e08d959f1e4d3357 \
-                    size    4262836
+checksums           sha256  e945bc04a1f7e66b76571dd644f5d92dff400bf23d014714cd513cd30387fa65 \
+                    rmd160  b17e122153f67cdfa0a568a174f9d312e79cce84 \
+                    size    3977856
 
 build.pre_args-append \
     -ldflags \"-X ${go.package}/src/cmd.version=v${version}\"

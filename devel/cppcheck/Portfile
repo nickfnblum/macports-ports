@@ -3,7 +3,7 @@
 PortSystem                  1.0
 PortGroup                   github 1.0
 
-github.setup                danmar cppcheck 2.14.0
+github.setup                danmar cppcheck 2.14.2
 revision                    0
 
 categories                  devel
@@ -20,9 +20,9 @@ long_description            Cppcheck is an analysis tool for C and C++ code. Unl
 
 github.tarball_from         archive
 
-checksums                   rmd160  d08cf2b98304310043bd45b728e86ccfea6fe817 \
-                            sha256  2d2ead75db10c5993d77c8dfe854dc42b00fac65953611bb6c83e25fc74b9d50 \
-                            size    3716204
+checksums                   rmd160  8312b237ad2371fa59f891942470ad4bc78214af \
+                            sha256  9c3acea5f489336bd83a8ea33917a9a04a80c56d874bf270287e7de27acf2d00 \
+                            size    3723248
 
 set python_branch   3.12
 set python_version  [string map {"." ""} ${python_branch}]

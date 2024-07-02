@@ -3,17 +3,17 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran baiyue VARDetect 0.1.6
-revision            1
+R.setup             cran baiyue VARDetect 0.1.8
+revision            0
 categories-append   math
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
 license             GPL-2
 description         Multiple change point detection \
                     in structural VAR models
 long_description    {*}${description}
-checksums           rmd160  334007f19a7b350a64c1f7f695a488587c743e5b \
-                    sha256  6b6b423733697a7ac756e619c9258201b8911fa00744cca4ab6d8db2c8f334fb \
-                    size    185205
+checksums           rmd160  4ecec14a1b4d7bc0402149e6bf6c73f87cfd159b \
+                    sha256  a0b14ae86b63e3feca3a9c0219bfbae3040f37d5ad6653c28fde844a2bcb48bc \
+                    size    822170
 
 depends_lib-append  port:R-igraph \
                     port:R-MTS \

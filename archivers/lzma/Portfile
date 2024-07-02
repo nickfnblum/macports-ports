@@ -9,11 +9,11 @@ PortGroup       makefile 1.0
 legacysupport.newest_darwin_requires_legacy 16
 
 name            lzma
-version         24.05
+version         24.07
 revision        0
-checksums       rmd160  e2ceea26f77e13013ba1f198df98df88239fb52c \
-                sha256  d42ed51c4d88900b4f0d958d99b16b907cd3cfd629cc3df49495285099a1e291 \
-                size    1665313
+checksums       rmd160  4564099c5d22d9a161e0a27db25b2c46d6aedcd8 \
+                sha256  40bbf732b568b8c4464f336522cca6f08723a95afec004278d8d2c9def877102 \
+                size    1685918
 
 categories      archivers
 license         public-domain
@@ -35,9 +35,7 @@ distname        lzma[strsed ${version} {/\.//}]
 extract.mkdir   yes
 
 extract {
-    # Exclude precompiled binaries that we don't need and which cannot be
-    # extracted by p7zip 16.02 ("ERROR: Unsupported Method").
-    # https://sourceforge.net/p/sevenzip/bugs/2472/
+    # Exclude precompiled binaries.
     system -W ${worksrcpath} "${prefix}/bin/7za x [shellescape ${distpath}/${distfiles}] -x'!bin/*'"
 }
 

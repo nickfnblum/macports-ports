@@ -6,10 +6,7 @@ PortGroup               cmake 1.1
 PortGroup               compiler_blacklist_versions 1.0
 PortGroup               legacysupport 1.1
 
-# _posix_memalign
-legacysupport.newest_darwin_requires_legacy 9
-
-gitlab.setup            AOMediaCodec SVT-AV1 2.1.0 v
+gitlab.setup            AOMediaCodec SVT-AV1 2.1.2 v
 name                    svt-av1
 revision                0
 categories              multimedia
@@ -24,14 +21,18 @@ long_description        The Scalable Video Technology for AV1 (SVT-AV1 Encoder a
                         real-time and live encoding/transcoding. The SVT-AV1 decoder implementation \
                         targets future codec research activities.
 
-checksums               rmd160  988dfdb8a17b10594172388119282b7915883b2f \
-                        sha256  9792636dcdb820a2f51eab34d5b10fe2595db31f5f8bae1db9ace999cb29555a \
-                        size    12023367
+checksums               rmd160  1cdf10ac638bb16ee8b55949629dcd905893a233 \
+                        sha256  31e4f522ecc526cf2352b02a1a7e0f0f4f44d0d80d52d3f58eaa5258717aa12f \
+                        size    11772531
 
 # error: unknown type name '__m256i'
 compiler.blacklist-append \
                         *gcc-4.8* *gcc-4.9* {clang < 500}
 compiler.cxx_standard   2011
+
+# _posix_memalign
+legacysupport.newest_darwin_requires_legacy \
+                        9
 
 if {${os.arch} ne "powerpc"} {
     depends_build-append \
@@ -50,3 +51,5 @@ variant native description "Optimize for CPU" {
     configure.args-append \
                         -DNATIVE=ON
 }
+
+gitlab.livecheck.regex {([0-9.]+)}

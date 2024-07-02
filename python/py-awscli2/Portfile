@@ -6,7 +6,7 @@ PortGroup           select 1.0
 PortGroup           github 1.0
 
 name                py-awscli2
-github.setup        aws aws-cli 2.15.53
+github.setup        aws aws-cli 2.17.2
 revision            0
 
 categories          python devel
@@ -20,20 +20,20 @@ long_description    {*}${description}
 
 homepage            https://aws.amazon.com/cli/
 
-checksums           rmd160  4ede7c27c2fc5d91f6bef5a7af37c0fa52c2efb3 \
-                    sha256  d99c6bc1bcc07b25d331d4c8a0cd0e894fd5b08aae354fe842f79b858778b409 \
-                    size    15174373
+checksums           rmd160  2899f22c6ef97b244f0dfd81dc78839453e37a1f \
+                    sha256  ac47f7971a1e20fbaa1f8f182c63a9a3e0f2a0e2ec9502c753e85a7d9862a6cb \
+                    size    14759320
 
-python.versions     38 39 310 311
+python.versions     39 310 311
 python.pep517       yes
 python.pep517_backend \
                     flit
 
 if {${name} ne ${subport}} {
-    if {${os.platform} eq "darwin" && ${os.major} <= 15} {
+    if {${os.platform} eq "darwin" && ${os.major} <= 18} {
         known_fail      yes
         pre-fetch {
-            ui_error "${name} @${version} requires macOS 10.12 or later."
+            ui_error "${name} @${version} requires macOS 10.15 or later."
             return -code error "incompatible macOS version"
         }
     }

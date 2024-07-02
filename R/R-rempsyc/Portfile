@@ -6,6 +6,7 @@ PortGroup           R 1.0
 # Revert to GitHub once updated there.
 R.setup             cran rempsyc rempsyc 0.1.7
 revision            1
+platforms           {darwin any}
 maintainers         nomaintainer
 license             GPL-3+
 description         Convenience functions for psychology
@@ -18,3 +19,33 @@ supported_archs     noarch
 
 depends_lib-append  port:R-dplyr \
                     port:R-rlang
+
+depends_test-append port:R-bootES \
+                    port:R-broom \
+                    port:R-correlation \
+                    port:R-datawizard \
+                    port:R-effectsize \
+                    port:R-emmeans \
+                    port:R-flextable \
+                    port:R-ggplot2 \
+                    port:R-ggpubr \
+                    port:R-ggrepel \
+                    port:R-ggsignif \
+                    port:R-insight \
+                    port:R-interactions \
+                    port:R-knitr \
+                    port:R-lmtest \
+                    port:R-markdown \
+                    port:R-modelbased \
+                    port:R-openxlsx2 \
+                    port:R-patchwork \
+                    port:R-performance \
+                    port:R-psych \
+                    port:R-qqplotr \
+                    port:R-report \
+                    port:R-rmarkdown \
+                    port:R-see \
+                    port:R-testthat \
+                    port:R-VennDiagram
+
+test.run            yes

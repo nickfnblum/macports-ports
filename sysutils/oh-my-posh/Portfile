@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/JanDeDobbeleer/oh-my-posh 21.2.1 v
+go.setup            github.com/JanDeDobbeleer/oh-my-posh 21.17.2 v
 go.offline_build    no
 github.tarball_from archive
 revision            0
@@ -20,15 +20,15 @@ maintainers         {gmail.com:herby.gillot @herbygillot} \
                     {duck.com:ihj3s1wy @PinoTucana} \
                     openmaintainer
 
-checksums           rmd160  b7c31ad1daa78c581cb875657b4e454247c6d354 \
-                    sha256  8075d0d2c32f4be90704721f177f281656f6b2d5821b1e033af722e03f7fd3a7 \
-                    size    6765048
+checksums           rmd160  dc2533b2358ccb03a088f15e776b1d2adf1e2087 \
+                    sha256  458e03804fa633295137a7e91515101f458d949329fa6a5e516d1753436099d6 \
+                    size    6767426
 
 build.dir           ${worksrcpath}/src
 
 build.pre_args-append \
     -ldflags \"-X github.com/jandedobbeleer/oh-my-posh/src/build.Version=${version} \
-    -X github.com/jandedobbeleer/oh-my-posh/src/build.Date="2024-06-04"\" -o ${name}
+    -X github.com/jandedobbeleer/oh-my-posh/src/build.Date="2024-06-29"\" -o ${name}
 
 set omp_share_path  ${prefix}/share/${name}
 

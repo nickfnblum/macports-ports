@@ -8,12 +8,12 @@ PortGroup           legacysupport 1.0
 PortGroup           muniversal 1.0
 
 name                gdal
-version             3.8.5
+version             3.9.1
 revision            0
 
-checksums           rmd160  295a15ae2621b0dfb7592fead8d19290858f108b \
-                    sha256  e8b4df2a8a7d25272f867455c0c230459545972f81f0eff2ddbf6a6f60dcb1e4 \
-                    size    8871404
+checksums           rmd160  8dd9e368cfacc39dfad3b5f42b713b61e23bab15 \
+                    sha256  aff3086fee75f5773e33a5598df98d8a4d10be411f777d3ce23584b21d8171ca \
+                    size    9098844
 
 categories          gis
 license             MIT BSD
@@ -36,26 +36,18 @@ use_xz              yes
 # error: call to 'abs' is ambiguous
 compiler.blacklist-append {clang < 900}
 
-# Enable use of std::shared_mutex on systems that support it (macOS 10.12+),
-# next major GDAL version (>3.8) will require C++17.
-if {${os.platform} eq "darwin" && ${os.major} < 16} {
-    compiler.cxx_standard 2014
-} else {
-    compiler.cxx_standard 2017
-}
+# https://trac.macports.org/ticket/70193
+compiler.cxx_standard 2017
 cmake.set_cxx_standard yes
 
 # See https://trac.macports.org/ticket/56908
 compiler.thread_local_storage yes
 
-# https://trac.macports.org/ticket/68716
-patchfiles-append   patch-have_shared_mutex.diff
-
 configure.optflags  -DGDAL_COMPILATION
 
 depends_build-append \
                     port:bash-completion \
-                    port:pkgconfig
+                    path:bin/pkg-config:pkgconfig
 
 depends_lib-append \
                     port:blosc \
@@ -246,6 +238,7 @@ configure.args-append                                        \
                     -DBUILD_JAVA_BINDINGS=OFF                \
                     -DBUILD_PYTHON_BINDINGS=OFF              \
                     -DGDAL_USE_ARCHIVE=OFF                   \
+                    -DGDAL_USE_ARMADILLO=OFF                 \
                     -DGDAL_USE_CFITSIO=OFF                   \
                     -DGDAL_USE_CRYPTOPP=OFF                  \
                     -DGDAL_USE_CURL=ON                       \
@@ -331,6 +324,11 @@ variant arrow description {Enable (Geo)Arrow IPC File Format / Stream and (Geo)P
                             -DOGR_ENABLE_DRIVER_ARROW=OFF   -DOGR_ENABLE_DRIVER_ARROW=ON \
                             -DOGR_ENABLE_DRIVER_PARQUET=OFF -DOGR_ENABLE_DRIVER_PARQUET=ON
     configure.args-append   -DARROW_USE_STATIC_LIBRARIES=OFF
+
+    if {[string match *gcc* ${configure.compiler}]} {
+        configure.ldflags-append \
+                                -latomic
+    }
 }
 
 variant cfitsio description {Enable FITS support} {
@@ -469,7 +467,7 @@ variant mysql8 conflicts mysql57 description {Enable MySQL 8 support} {
     depends_lib-append      port:mysql8
     configure.args-replace  -DGDAL_USE_MYSQL=OFF    -DGDAL_USE_MYSQL=ON
     configure.args-append   -DMYSQL_INCLUDE_DIR=${prefix}/include/mysql8/mysql \
-                            -DMYSQL_LIBRARY=${prefix}/lib/mysql8/lib/libmysqlclient.dylib
+                            -DMYSQL_LIBRARY=${prefix}/lib/mysql8/mysql/libmysqlclient.dylib
 }
 
 variant native description {Optimize for speed} {
@@ -545,7 +543,7 @@ variant tiledb description {Enable TileDB support} {
 }
 
 # PostgreSQL variants
-set pg_suffixes {12 13 14 15}
+set pg_suffixes {12 13 14 15 16}
 set pg_variants {}
 set pg_default_variant "if {"
 foreach v ${pg_suffixes} {

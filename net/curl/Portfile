@@ -6,10 +6,10 @@ PortGroup                       clang_dependency 1.0
 # Increase the revision of p5-www-curl whenever the version of curl gets updated.
 
 name                            curl
-version                         8.7.1
-checksums                       rmd160  9744fc15c2e9f903a845f960ba3f32acd3aaadca \
-                                sha256  6fea2aac6a4610fbd0400afb0bcddbe7258a64c63f1f68e5855ebc0c659710cd \
-                                size    2707016
+version                         8.8.0
+checksums                       rmd160  d8494c0468d2a775d45ecb9f1e7c260d085689f3 \
+                                sha256  0f58bb95fc330c8a46eeb3df5701b0d90c9d9bfcc42bd1cd08791d12551d4400 \
+                                size    2748860
 
 categories                      net www
 platforms                       darwin freebsd
@@ -45,6 +45,9 @@ if {${name} eq ${subport}} {
                                 port:nghttp2 \
                                 port:zlib \
                                 port:zstd
+
+    patchfiles-append           patch-docs-Makefile.in.diff
+    patchfiles-append           x509asn1.patch
 
     configure.args              --disable-silent-rules \
                                 --enable-ipv6 \
@@ -139,7 +142,7 @@ if {${name} eq ${subport}} {
             HTTP-COOKIES.md \
             INTERNALS.md \
             KNOWN_BUGS \
-            MAIL-ETIQUETTE \
+            MAIL-ETIQUETTE.md \
             PARALLEL-TRANSFERS.md \
             ROADMAP.md \
             SECURITY-ADVISORY.md \

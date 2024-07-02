@@ -3,7 +3,7 @@
 PortSystem              1.0
 PortGroup               github 1.0
 
-github.setup            gitkraken gk-cli 2.0.0 v
+github.setup            gitkraken gk-cli 2.1.0 v
 name                    gk
 github.tarball_from     releases
 
@@ -25,13 +25,13 @@ long_description        ${name} is GitKraken on the command line. It makes worki
                         to visualize git information when you need it.
 
 checksums               ${name}_${version}_macOS_arm64.zip \
-                            sha256  36be7a2e111b7ac961527fceee0857c20bb7844f7b9f4f35e2a7518a82d53840 \
-                            rmd160  92d1d21542d64a4051442d2350d4a8135cd8df96 \
-                            size    11899037 \
+                            sha256  4c6adb3f271032525b66d55e3d57cdc54bb7d9f41ddc6057d65a56cacf64a2b6 \
+                            rmd160  e73978a9be205fc361cb91037ce5126bc7f1f3cf \
+                            size    12689691 \
                         ${name}_${version}_macOS_x86_64.zip \
-                            sha256  719f87bca4448ae5dfdcd61723b6c1a5f6b0f1472a53032cc5e71f9248cdb502 \
-                            rmd160  9d7515579a49614e5b89b028f39cf5dbaf8404b5 \
-                            size    12877324
+                            sha256  1b8da326401e534c40ce10a608111c55210316389dcd7f879b2aae0ea781e58d \
+                            rmd160  b6e5cc00d83a596951c590d87bcf470a8b32a2be \
+                            size    13738694
 
 extract.mkdir           yes
 

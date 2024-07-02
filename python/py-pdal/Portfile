@@ -4,8 +4,8 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-pdal
-version             3.3.0
-revision            2
+version             3.4.5
+revision            0
 
 categories-append   gis
 license             BSD
@@ -19,43 +19,34 @@ long_description    {*}${description} allows you to process data with PDAL\
 
 homepage            https://www.pdal.io
 
-checksums           rmd160  50fb67708b007a4276f9d35898748a0031dcd1eb \
-                    sha256  08481ced6e3d1cbdf391282b4f450b84a566cebb077e680f4658c03ccbcb24c0 \
-                    size    246265
+checksums           rmd160  54a87f165cbbbbe285340f876521d9b4938cb6ba \
+                    sha256  6e42ec8c368a9d1c14abf0eff13a5b9d28b6de08ef7c2ca2b4900a15186d46f4 \
+                    size    89528
 
-python.versions     38 39 310 311 312
-python.pep517       no
+python.versions     39 310 311 312
+
+patchfiles          patch_pyproject_pybind11.diff
 
 if {${name} ne ${subport}} {
-    PortGroup       cmake 1.1
-
     compiler.cxx_standard \
                     2017
 
     depends_build-append \
-                    port:py${python.version}-setuptools \
-                    port:py${python.version}-scikit-build \
-                    port:pybind11 \
-                    port:ninja
+                    path:bin/cmake:cmake \
+                    port:ninja \
+                    port:py${python.version}-pybind11 \
+                    port:py${python.version}-scikit-build-core
 
     depends_lib-append \
                     port:pdal \
                     port:py${python.version}-numpy
 
     depends_test-append \
-                    port:py${python.version}-meshio
+                    port:py${python.version}-meshio \
+                    port:py${python.version}-pandas
 
     build.env-append \
-                    pybind11_DIR=${prefix}/share/cmake/pybind11
-    build.dir       ${worksrcpath}
-    build.post_args
-
-    destroot.dir    ${worksrcpath}
-    destroot.target install
-
-    pre-configure {
-        file delete -force {*}[glob -nocomplain ${worksrcpath}/_skbuild/linux*]
-    }
+                    pybind11_DIR=${python.pkgd}/pybind11/share/cmake/pybind11
 
     test.run        yes
  }

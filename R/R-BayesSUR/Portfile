@@ -3,17 +3,17 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran zhi.zhao BayesSUR 2.1-7
-revision            1
+R.setup             cran zhi.zhao BayesSUR 2.2-1
+revision            0
 categories-append   math
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
 license             MIT
 description         Bayesian Seemingly Unrelated Regression
 long_description    {*}${description}
 homepage            https://github.com/mbant/BayesSUR
-checksums           rmd160  53aeb7038e1e1b28af75109038d125493a272de0 \
-                    sha256  76ce717f3b79ea35b99c6ff1c953582eb57a097e03893b59f4f5c53f6ac4c096 \
-                    size    3326688
+checksums           rmd160  53cdecd2f3468ca74a0aac7b9e8e627c14d0ee45 \
+                    sha256  44079d47e3286edc23762cec927f93886e80c396db28730d009f47e2432aa17e \
+                    size    3319407
 
 depends_lib-append  port:R-igraph \
                     port:R-Rcpp \
@@ -29,6 +29,7 @@ depends_test-append port:R-BDgraph \
                     port:R-knitr \
                     port:R-plyr \
                     port:R-R.rsp \
+                    port:R-rmarkdown \
                     port:R-scrime
 
 test.run            yes

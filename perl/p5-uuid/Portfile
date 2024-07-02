@@ -4,17 +4,15 @@ PortSystem          1.0
 PortGroup           perl5 1.0
 
 perl5.branches      5.28 5.30 5.32 5.34
-perl5.setup         UUID 0.33 ../../authors/id/J/JR/JRM
+perl5.setup         UUID 0.36 ../../authors/id/J/JR/JRM
 license             Artistic-2
 maintainers         nomaintainer
 description         UUID - Universally Unique Identifier library for Perl
 long_description    {*}${description}
 
-platforms           darwin
-
-checksums           rmd160  2749a2a242918a8f31701b6de0abc973c6c33757 \
-                    sha256  01cdb0d5a1ec31524f0cdde5167c8d35782cd93a24ba2421b12aee3ac476bf7c \
-                    size    54458
+checksums           rmd160  8aa946265212b6e2b413e6841f3983625a4fb955 \
+                    sha256  c182e9ad854981a90803ae25380d2197ca6f923519e1d524bc85205eaf49bf06 \
+                    size    72570
 
 if {${perl5.major} != ""} {
     depends_build-append \

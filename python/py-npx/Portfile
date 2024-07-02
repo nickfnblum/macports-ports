@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           github 1.0
 PortGroup           python 1.0
 
-github.setup        nschloe npx 0.1.2 v
+github.setup        nschloe npx 0.1.6 v
 name                py-npx
 revision            0
 license             BSD
@@ -21,9 +21,9 @@ platforms           {darwin any}
 
 github.tarball_from archive
 
-checksums           rmd160  84e659f329884c4fea16481b4a223610fa1e5915 \
-                    sha256  b439c45bb95647df7fb020278f4fd59869f615ef6a13d096b49335a3f7537305 \
-                    size    10809
+checksums           rmd160  3cb46b964ef7a459e2ad6fe1364cd12fe530561e \
+                    sha256  13cc2346030720340a9f50d5fce871ed104087561c9ffefd00d08d00c7aaa1c8 \
+                    size    10854
 
 python.versions     38 39 310 311 312
 

@@ -13,18 +13,18 @@ legacysupport.newest_darwin_requires_legacy 19
 # See discussion in: https://github.com/macports/macports-ports/pull/19686
 legacysupport.use_mp_libcxx yes
 
-github.setup        TileDB-Inc TileDB 2.23.0
+github.setup        TileDB-Inc TileDB 2.24.1
 name                tiledb
-revision            2
+revision            0
 categories          databases
 license             MIT
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
 description         The universal storage engine
 long_description    {*}${description}
 homepage            https://tiledb.com
-checksums           rmd160  3b9fbc29c9381a94291f434071d1f34877c889ab \
-                    sha256  3a7db2094eb5f01d1fdd8c0e74912cbf78f9f7658f520e84f2c6f647f404ba8c \
-                    size    4443024
+checksums           rmd160  f6b1d30808790f042f222c5a2a8cfa72116af58d \
+                    sha256  c04d1a75b1241388de1da7e6d4022d997acf061f4042ea5ecf9cecb7abe14dda \
+                    size    4473586
 github.tarball_from archive
 
 # Notice that 32-bit platforms are not supported by upstream, and there are reports elsewhere
